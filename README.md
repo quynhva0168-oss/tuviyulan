@@ -11,7 +11,7 @@ Website giới thiệu Tử Vi Yulan, giao diện responsive màu xanh ngọc đ
 ## Giới hạn quan trọng
 Đây là **bản giao diện MVP**, chưa phải hệ thống lập lá số Tử Vi thật. Form hiện chỉ kiểm tra dữ liệu trong trình duyệt và hiển thị thông báo; không tính Can Chi, lịch âm, an cung, an sao, vận hạn, không lưu dữ liệu và không nhận thanh toán. Không dùng kết quả demo để luận đoán.
 
-Địa chỉ email liên hệ trong `index.html` là placeholder `hello@tuviyulan.example`; hãy thay bằng email thật trước khi công bố.
+Bản nâng cấp này chưa gắn email hoặc kênh mạng xã hội giả định. Hãy bổ sung thông tin liên hệ thật khi bạn sẵn sàng công bố.
 
 ## Xem thử trên Mac
 1. Giải nén file ZIP.
@@ -23,7 +23,7 @@ Website giới thiệu Tử Vi Yulan, giao diện responsive màu xanh ngọc đ
 2. Đăng nhập GitHub, bấm dấu `+` góc trên bên phải → **New repository**.
 3. Đặt tên repository: `tuviyulan` (chọn **Public**) → **Create repository**.
 4. Trong repository mới, bấm **Add file** → **Upload files**.
-5. Mở thư mục đã giải nén trên Mac, kéo thả **3 file `index.html`, `styles.css`, `script.js` và `README.md`** vào vùng upload trên GitHub. Nếu trình duyệt không nhận kéo thả nhiều file, tải từng file bằng **choose your files**.
+5. Mở thư mục đã giải nén trên Mac, kéo thả 4 file `index.html`, `styles.css`, `script.js` và `README.md` vào vùng upload trên GitHub. Nếu trình duyệt không nhận kéo thả nhiều file, tải từng file bằng **choose your files**.
 6. Bấm **Commit changes**.
 7. Vào tab **Settings** của repository.
 8. Ở thanh bên trái, chọn **Pages**.
