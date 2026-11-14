@@ -48,3 +48,14 @@ Bản demo không gửi thông tin ngày sinh lên máy chủ. Nếu phát tri�
 - Bổ sung giới tính và nơi sinh.
 - Kiểm tra dữ liệu bắt buộc và hiển thị tóm tắt trên trình duyệt.
 - **Chưa** thực hiện chuyển đổi âm dương lịch hoặc tính toán lá số; các chức năng này cần được xây dựng và kiểm chứng riêng.
+
+
+## Bản nâng cấp bộ chuyển đổi lịch v4
+
+- Chuyển đổi hai chiều ngày Dương lịch ⇄ Âm lịch Việt Nam theo múi giờ UTC+7, dựa trên thuật toán Hồ Ngọc Đức.
+- Tự xác định ngày Sóc, tháng 11 âm lịch và tháng nhuận theo Trung khí.
+- Kiểm tra ngày dương lịch thực tế; kiểm tra ngày/tháng âm lịch, năm trong phạm vi 1800–2199 và cờ tháng nhuận bằng phép chuyển đổi ngược.
+- Khi gửi biểu mẫu, hiển thị cặp ngày dương – âm đã đối chiếu để người dùng xác nhận.
+- Chưa tính Can Chi, Mệnh/Thân, 12 cung, chính tinh, phụ tinh hoặc vận hạn.
+
+**Lưu ý về dữ liệu lịch sử:** bản v4 dùng quy ước lịch Việt Nam UTC+7 xuyên suốt phạm vi hỗ trợ; các giai đoạn lịch sử từng dùng múi giờ khác có thể cần cấu hình lịch pháp lịch sử riêng. Kết quả hiện tại là bước chuẩn hóa ngày sinh, chưa phải lá số Tử Vi hoàn chỉnh.

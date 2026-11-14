@@ -156,9 +156,9 @@
                 </select>
               </label>
             </div>
-            <label>Năm âm lịch<input name="lunarYear" type="number" min="1800" max="2200" placeholder="Ví dụ: 2003"></label>
+            <label>Năm âm lịch<input name="lunarYear" type="number" min="1800" max="2199" placeholder="Ví dụ: 2003"></label>
             <label class="consent"><input type="checkbox" name="isLeapMonth"> Đây là tháng nhuận</label>
-            <p class="form-footnote">Vui lòng nhập ngày âm lịch theo lịch Việt Nam. Ngày hợp lệ và tháng nhuận sẽ được đối chiếu khi bộ máy đổi lịch hoàn thiện.</p>
+            <p class="form-footnote">Ngày âm lịch được đối chiếu theo lịch Việt Nam (UTC+7). Nếu chọn tháng nhuận, hệ thống sẽ kiểm tra tháng đó có nhuận trong năm đã nhập hay không.</p>
           </div>
 
           <label>Giờ sinh
@@ -191,7 +191,7 @@
           <label>Nơi sinh<input name="birthplace" type="text" placeholder="Ví dụ: TP. Hồ Chí Minh, Việt Nam" maxlength="100" required></label>
           <label class="consent"><input type="checkbox" name="consent" required> Tôi đồng ý sử dụng thông tin chỉ cho bản thử nghiệm giao diện này.</label>
           <button class="button button-gold full" type="submit">Tạo bản xem thử <span>↗</span></button>
-          <p class="form-footnote">Bản thử nghiệm chỉ xác nhận thông tin nhập trên trình duyệt, chưa chuyển đổi âm dương lịch hoặc lập lá số chính thức.</p>
+          <p class="form-footnote">Bản v4 đã chuyển đổi hai chiều âm – dương lịch theo lịch Việt Nam UTC+7. Chưa thực hiện an Mệnh, an Thân, an cung hoặc an sao.</p>
           <div class="form-result" id="formResult" role="status" aria-live="polite"></div>
         </form>
       </div>
