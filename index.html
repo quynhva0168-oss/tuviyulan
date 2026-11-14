@@ -125,19 +125,73 @@
         <div class="chart-copy">
           <p class="eyebrow">BẢN THỬ NGHIỆM GIAO DIỆN</p>
           <h2>Bắt đầu từ<br><em>thông tin khai sinh.</em></h2>
-          <p>Biểu mẫu hiện dùng để thử giao diện nhập dữ liệu. Yulan sẽ chỉ công bố chức năng lập lá số khi quy tắc đổi lịch, an cung, an sao và các trường hợp biên đã được kiểm chứng.</p>
+          <p>Nhập thông tin khai sinh theo âm lịch hoặc dương lịch, kèm giờ sinh và nơi sinh. Yulan sẽ chỉ công bố chức năng lập lá số khi quy tắc đổi lịch, an cung, an sao và các trường hợp biên đã được kiểm chứng.</p>
           <div class="notice"><span>✦</span><p><strong>Lưu ý:</strong> Kết quả hiện tại chưa phải lá số Tử Vi chính thức và không dùng để đưa ra quyết định quan trọng.</p></div>
         </div>
         <form class="birth-form" id="birthForm">
           <label>Họ tên hoặc tên gọi<input name="name" type="text" placeholder="Nhập tên của bạn" maxlength="60"></label>
-          <div class="form-row">
-            <label>Ngày sinh<input name="birthdate" type="date" required></label>
-            <label>Giờ sinh<select name="birthtime" required><option value="">Chọn giờ sinh</option><option>23:00 – 00:59 (Giờ Tý)</option><option>01:00 – 02:59 (Giờ Sửu)</option><option>03:00 – 04:59 (Giờ Dần)</option><option>05:00 – 06:59 (Giờ Mão)</option><option>07:00 – 08:59 (Giờ Thìn)</option><option>09:00 – 10:59 (Giờ Tỵ)</option><option>11:00 – 12:59 (Giờ Ngọ)</option><option>13:00 – 14:59 (Giờ Mùi)</option><option>15:00 – 16:59 (Giờ Thân)</option><option>17:00 – 18:59 (Giờ Dậu)</option><option>19:00 – 20:59 (Giờ Tuất)</option><option>21:00 – 22:59 (Giờ Hợi)</option></select></label>
+
+          <fieldset class="calendar-choice">
+            <legend>Loại lịch sử dụng</legend>
+            <label><input type="radio" name="calendarType" value="solar" checked> Dương lịch</label>
+            <label><input type="radio" name="calendarType" value="lunar"> Âm lịch</label>
+          </fieldset>
+
+          <div id="solarFields">
+            <label>Ngày sinh dương lịch<input name="solarDate" type="date" required></label>
           </div>
-          <label>Giới tính<select name="gender" required><option value="">Chọn giới tính</option><option value="Nam">Nam</option><option value="Nữ">Nữ</option><option value="Khác">Khác / Không muốn cung cấp</option></select></label>
-          <label class="consent"><input type="checkbox" required> Tôi đồng ý sử dụng thông tin chỉ cho bản thử nghiệm giao diện này.</label>
+
+          <div id="lunarFields" hidden>
+            <div class="form-row">
+              <label>Ngày âm lịch
+                <select name="lunarDay">
+                  <option value="">Ngày</option>
+                  <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option>
+                </select>
+              </label>
+              <label>Tháng âm lịch
+                <select name="lunarMonth">
+                  <option value="">Tháng</option>
+                  <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                </select>
+              </label>
+            </div>
+            <label>Năm âm lịch<input name="lunarYear" type="number" min="1800" max="2200" placeholder="Ví dụ: 2003"></label>
+            <label class="consent"><input type="checkbox" name="isLeapMonth"> Đây là tháng nhuận</label>
+            <p class="form-footnote">Vui lòng nhập ngày âm lịch theo lịch Việt Nam. Ngày hợp lệ và tháng nhuận sẽ được đối chiếu khi bộ máy đổi lịch hoàn thiện.</p>
+          </div>
+
+          <label>Giờ sinh
+            <select name="birthtime" required>
+              <option value="">Chọn giờ sinh</option>
+              <option value="Tý">23:00 – 00:59 (Giờ Tý)</option>
+              <option value="Sửu">01:00 – 02:59 (Giờ Sửu)</option>
+              <option value="Dần">03:00 – 04:59 (Giờ Dần)</option>
+              <option value="Mão">05:00 – 06:59 (Giờ Mão)</option>
+              <option value="Thìn">07:00 – 08:59 (Giờ Thìn)</option>
+              <option value="Tỵ">09:00 – 10:59 (Giờ Tỵ)</option>
+              <option value="Ngọ">11:00 – 12:59 (Giờ Ngọ)</option>
+              <option value="Mùi">13:00 – 14:59 (Giờ Mùi)</option>
+              <option value="Thân">15:00 – 16:59 (Giờ Thân)</option>
+              <option value="Dậu">17:00 – 18:59 (Giờ Dậu)</option>
+              <option value="Tuất">19:00 – 20:59 (Giờ Tuất)</option>
+              <option value="Hợi">21:00 – 22:59 (Giờ Hợi)</option>
+            </select>
+          </label>
+
+          <label>Giới tính
+            <select name="gender" required>
+              <option value="">Chọn giới tính</option>
+              <option value="Nam">Nam</option>
+              <option value="Nữ">Nữ</option>
+              <option value="Khác">Khác / Không muốn cung cấp</option>
+            </select>
+          </label>
+
+          <label>Nơi sinh<input name="birthplace" type="text" placeholder="Ví dụ: TP. Hồ Chí Minh, Việt Nam" maxlength="100" required></label>
+          <label class="consent"><input type="checkbox" name="consent" required> Tôi đồng ý sử dụng thông tin chỉ cho bản thử nghiệm giao diện này.</label>
           <button class="button button-gold full" type="submit">Tạo bản xem thử <span>↗</span></button>
-          <p class="form-footnote">Dữ liệu chỉ được xử lý trên trình duyệt trong bản demo này, không gửi lên máy chủ.</p>
+          <p class="form-footnote">Bản thử nghiệm chỉ xác nhận thông tin nhập trên trình duyệt, chưa chuyển đổi âm dương lịch hoặc lập lá số chính thức.</p>
           <div class="form-result" id="formResult" role="status" aria-live="polite"></div>
         </form>
       </div>

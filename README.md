@@ -38,3 +38,13 @@ Bản nâng cấp này chưa gắn email hoặc kênh mạng xã hội giả đ�
 
 ## Bảo mật và quyền riêng tư
 Bản demo không gửi thông tin ngày sinh lên máy chủ. Nếu phát triển lưu hồ sơ, tài khoản hoặc thanh toán trong tương lai, cần bổ sung backend, chính sách quyền riêng tư, bảo mật, đồng ý xử lý dữ liệu và quy trình xóa dữ liệu phù hợp.
+
+
+## Bản nâng cấp biểu mẫu v3
+
+- Hỗ trợ chọn ngày sinh dương lịch hoặc âm lịch.
+- Biểu mẫu âm lịch có ngày, tháng, năm và tùy chọn tháng nhuận.
+- Giờ sinh được lưu theo 12 địa chi.
+- Bổ sung giới tính và nơi sinh.
+- Kiểm tra dữ liệu bắt buộc và hiển thị tóm tắt trên trình duyệt.
+- **Chưa** thực hiện chuyển đổi âm dương lịch hoặc tính toán lá số; các chức năng này cần được xây dựng và kiểm chứng riêng.
