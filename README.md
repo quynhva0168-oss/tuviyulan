@@ -59,3 +59,13 @@ Bản demo không gửi thông tin ngày sinh lên máy chủ. Nếu phát tri�
 - Chưa tính Can Chi, Mệnh/Thân, 12 cung, chính tinh, phụ tinh hoặc vận hạn.
 
 **Lưu ý về dữ liệu lịch sử:** bản v4 dùng quy ước lịch Việt Nam UTC+7 xuyên suốt phạm vi hỗ trợ; các giai đoạn lịch sử từng dùng múi giờ khác có thể cần cấu hình lịch pháp lịch sử riêng. Kết quả hiện tại là bước chuẩn hóa ngày sinh, chưa phải lá số Tử Vi hoàn chỉnh.
+
+
+## Bản nâng cấp an Mệnh – an Thân v5
+
+- Dùng tháng âm lịch đã chuyển đổi ở v4 và giờ sinh theo 12 địa chi.
+- Lấy cung Dần làm tháng Giêng, đếm thuận đến tháng sinh.
+- Từ cung tháng sinh, lấy giờ Tý làm mốc: đếm nghịch theo giờ sinh để an Mệnh, đếm thuận để an Thân.
+- Từ cung Mệnh, an 11 cung theo chiều nghịch: Huynh Đệ, Phu Thê, Tử Tức, Tài Bạch, Tật Ách, Thiên Di, Nô Bộc, Quan Lộc, Điền Trạch, Phúc Đức, Phụ Mẫu.
+- Kết quả được hiển thị ngay trên trình duyệt; không gửi dữ liệu ngày sinh lên máy chủ.
+- Chưa an Can cung, Ngũ hành Cục, chính tinh, phụ tinh hoặc vận hạn.

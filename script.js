@@ -86,6 +86,22 @@ function lunarToSolar(day,month,year,leap) {
   return {day:result[0],month:result[1],year:result[2]};
 }
 const pad = n => String(n).padStart(2,"0");
+
+// Traditional Vietnamese Tử Vi: locate Mệnh/Thân from lunar month and birth hour.
+// Branch indices follow Tý, Sửu, Dần...; increasing index is the clockwise direction.
+const BRANCHES = ["Tý","Sửu","Dần","Mão","Thìn","Tỵ","Ngọ","Mùi","Thân","Dậu","Tuất","Hợi"];
+const PALACES = ["Mệnh","Huynh Đệ","Phu Thê","Tử Tức","Tài Bạch","Tật Ách","Thiên Di","Nô Bộc","Quan Lộc","Điền Trạch","Phúc Đức","Phụ Mẫu"];
+const HOUR_INDEX = Object.fromEntries(BRANCHES.map((b,i)=>[b,i]));
+const mod12 = n => ((n % 12) + 12) % 12;
+function locateMenhThan(lunarMonth, hourBranch) {
+  const hour = HOUR_INDEX[hourBranch];
+  const monthPalace = mod12(2 + lunarMonth - 1); // Dần is month 1
+  return { menh: mod12(monthPalace - hour), than: mod12(monthPalace + hour) };
+}
+function arrangePalaces(menhIndex) {
+  // From Mệnh, count counter-clockwise: Huynh Đệ, Phu Thê... Phụ Mẫu.
+  return PALACES.map((palace, i) => ({ palace, branch: BRANCHES[mod12(menhIndex - i)] }));
+}
 const birthForm=document.getElementById("birthForm"), formResult=document.getElementById("formResult");
 const solarFields=document.getElementById("solarFields"), lunarFields=document.getElementById("lunarFields");
 const calendarChoices=document.querySelectorAll('input[name="calendarType"]');
@@ -112,5 +128,8 @@ birthForm?.addEventListener("submit",event=>{
   }
   const leapText=lunar.leap?" (tháng nhuận)":"";
   const title=name?` của ${name}`:"";
-  formResult.textContent=`Đã đối chiếu thông tin${title}: Dương lịch ${pad(solar.day)}/${pad(solar.month)}/${solar.year} ⇄ Âm lịch ${lunar.day}/${lunar.month}/${lunar.year}${leapText} (lịch Việt Nam, UTC+7). Giờ ${time} · ${gender} · Nơi sinh: ${birthplace}. Đây mới là bước chuyển đổi và xác nhận ngày sinh; website chưa an Mệnh, an Thân hoặc an sao.`;
+  const positions=locateMenhThan(lunar.month,time);
+  const palaceRows=arrangePalaces(positions.menh);
+  const palaceText=palaceRows.map((item,i)=>`${String(i+1).padStart(2,"0")}. ${item.palace}: ${item.branch}${positions.than===BRANCHES.indexOf(item.branch)?"  ·  (đóng Thân)":""}`).join("\n");
+  formResult.textContent=`ĐÃ XÁC NHẬN DỮ LIỆU${title}\nDương lịch: ${pad(solar.day)}/${pad(solar.month)}/${solar.year}\nÂm lịch: ${lunar.day}/${lunar.month}/${lunar.year}${leapText}\nGiờ sinh: ${time} · ${gender} · Nơi sinh: ${birthplace}\n\nKẾT QUẢ V5 — AN MỆNH, AN THÂN\nCung Mệnh: ${BRANCHES[positions.menh]}\nCung Thân: ${BRANCHES[positions.than]}\n\nBỐ CỤC 12 CUNG\n${palaceText}\n\nQuy tắc: lấy Dần làm tháng Giêng; từ cung tháng sinh, đếm nghịch theo giờ để an Mệnh, đếm thuận theo giờ để an Thân. Từ Mệnh, an 11 cung còn lại theo chiều nghịch. Đây là bước an cung cơ bản; chưa an Can cung, Ngũ hành Cục, chính tinh hoặc phụ tinh.`;
 });
